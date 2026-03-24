@@ -14,11 +14,8 @@ from sklearn.metrics import accuracy_score, adjusted_rand_score
 import matplotlib
 matplotlib.use('TkAgg')
 
-try:
-    nlp = spacy.load("uk_core_news_sm")
-except OSError:
-    print("Завантажте модель: python -m spacy download uk_core_news_sm")
-    exit()
+nlp = spacy.load("uk_core_news_sm")
+
 
 HEADERS = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
 RANDOM_SEED = 42
@@ -46,7 +43,7 @@ def get_news(limit=80):
 
 def preprocess(text):
     doc = nlp(text.lower())
-    return " ".join([t.lemma_ for t in doc if not t.is_stop and not t.is_punct and t.is_alpha])
+    return " ".join([t.lemma_ for t in doc if not t.is_stop and not t.is_punct and t.is_alpha and len(t.lemma_) > 1])
 
 print("1. Збір даних та синтез фейків")
 real_raw = get_news(limit=45)
