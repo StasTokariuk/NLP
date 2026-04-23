@@ -136,7 +136,7 @@ def main():
 
     df = pd.DataFrame(data)
     if df.empty:
-        print("Не вдалося зібрати новини. Перевірте з'єднання з інтернетом.")
+        print("Не вдалося зібрати новини.")
         return
 
     df.to_csv("news_dataset.csv", index=False, encoding="utf-8-sig")
@@ -158,7 +158,7 @@ def main():
         print("Матриця подібності джерел:")
         print(sim_df.round(3))
     else:
-        print("⚠Зібрано лише 1 джерело, неможливо порівняти.")
+        print("Зібрано лише 1 джерело, неможливо порівняти.")
         sim_df = None
 
     label_map = {'positive': 'Позитив', 'neutral': 'Нейтрал', 'negative': 'Негатив'}
