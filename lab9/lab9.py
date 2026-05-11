@@ -11,8 +11,8 @@ import pymorphy3
 
 # CONFIG
 
-LANG = "uk"  # "uk" | "en"
-MODE = "text"  # "text" | "voice"
+LANG = "uk"
+MODE = "text"
 
 LABELS = {
     "uk": {
